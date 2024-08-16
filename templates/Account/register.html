@@ -1,0 +1,65 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="{% static 'login/css/style.css' %}">
+
+</head>
+<body>
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+                <h2 class="heading-section">User Register</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="login-wrap p-4 p-md-5">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="fa fa-user-o"></span>
+                    </div>
+                    <h3 class="text-center mb-4">Enter your information</h3>
+                    {% for error in form.phone.errors %}
+                        <p class="alert alert-danger">{{ error }}</p>
+                    {% endfor %}
+                    <form method="post" class="login-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.phone }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.fullname }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email }}
+                        </div>
+                          <div class="form-group text-center mt-1">
+                        <a href="{% url 'account:login' %}" class="btn btn-secondary rounded p-1 px-1">Login</a>
+                    </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary rounded submit p-3 px-5">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{% static 'login/js/jquery.min.js' %}"></script>
+<script src="{% static 'login/js/popper.js' %}"></script>
+<script src="{% static 'login/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'login/js/main.js' %}"></script>
+
+</body>
+</html>
+
